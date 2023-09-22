@@ -15,10 +15,12 @@ class TwitchPageView extends ConsumerStatefulWidget {
     super.key,
     required this.channelName,
     required this.userNick,
+    required this.oauth,
   });
 
   final String channelName;
   final String userNick;
+  final String oauth;
 
   @override
   ConsumerState<TwitchPageView> createState() => _TwitchPageViewState();
@@ -29,8 +31,11 @@ class _TwitchPageViewState extends ConsumerState<TwitchPageView>
   @override
   void initState() {
     super.initState();
-    context.afterBuild((p0) =>
-        mixinInit(channelName: widget.channelName, userNick: widget.userNick));
+    context.afterBuild((p0) => mixinInit(
+          channelName: widget.channelName,
+          userNick: widget.userNick,
+          oauth: widget.oauth,
+        ));
   }
 
   @override

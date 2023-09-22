@@ -11,8 +11,9 @@ class PagePaths {
   static String twitch({
     required String channelName,
     required String userNick,
+    required String oauth,
   }) =>
-      "/twitch?channelName=$channelName&userNick=$userNick";
+      "/twitch?channelName=$channelName&userNick=$userNick&oauth=$oauth";
 }
 
 final appRouter = GoRouter(
@@ -26,8 +27,9 @@ final appRouter = GoRouter(
     AppRoute(
       PagePaths.twitch.path,
       (s) => TwitchPageView(
-        channelName: s.pathParameters['channelName'].toStringg!,
-        userNick: s.pathParameters['userNick'].toStringg!,
+        channelName: s.uri.queryParameters['channelName'].toStringg ?? "",
+        userNick: s.uri.queryParameters['userNick'].toStringg ?? "",
+        oauth: s.uri.queryParameters['oauth'].toStringg ?? "",
       ),
     ),
   ],

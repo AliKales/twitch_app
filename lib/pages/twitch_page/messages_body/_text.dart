@@ -5,6 +5,10 @@ class _Text extends StatelessWidget {
 
   final MMessage message;
 
+  bool get _isMe {
+    return message.senderName == Settings.user?.userNick;
+  }
+
   @override
   Widget build(BuildContext context) {
     String senderName = message.senderName;
@@ -12,7 +16,11 @@ class _Text extends StatelessWidget {
     return Text.rich(
       TextSpan(
         text: "$senderName:\n",
-        style: context.textTheme.titleLarge!.toBold,
+        style: context.textTheme.titleLarge!.copyWith(
+          color:
+              _isMe ? context.colorScheme.error : context.colorScheme.primary,
+          fontWeight: FontWeight.bold,
+        ),
         children: [
           TextSpan(
             text: messageText,

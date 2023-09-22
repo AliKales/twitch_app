@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:twitch_app/common_libs.dart';
 import 'package:twitch_app/core/c_shared_preferences.dart';
 import 'package:twitch_app/core/models/m_user.dart';
+import 'package:twitch_app/pages/main_page/authed/authed_view.dart';
 import 'package:twitch_app/pages/main_page/no_auth/no_auth_view.dart';
 import 'package:twitch_app/router.dart';
 import 'package:twitch_app/settings.dart';
@@ -37,6 +38,6 @@ class _MainPageViewState extends State<MainPageView> with _MixinMainPage {
       );
     }
 
-    return const Column();
+    return const AuthedView();
   }
 }

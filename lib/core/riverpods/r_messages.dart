@@ -14,4 +14,5 @@ class RMessages extends ChangeNotifier {
   }
 }
 
-final rMessages = ChangeNotifierProvider<RMessages>((ref) => RMessages());
+final rMessages =
+    ChangeNotifierProvider.autoDispose<RMessages>((ref) => RMessages());

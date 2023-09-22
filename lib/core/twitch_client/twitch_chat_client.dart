@@ -9,10 +9,12 @@ class TwitchChatClient {
   TwitchChatClient({
     required this.channelName,
     required this.userNick,
+    required this.oauth,
   });
 
   final String channelName;
   final String userNick;
+  final String oauth;
 
   WebSocketChannel? _channel;
 
@@ -26,7 +28,7 @@ class TwitchChatClient {
     _channel =
         WebSocketChannel.connect(Uri.parse('ws://irc-ws.chat.twitch.tv:80'));
 
-    _addSink("PASS oauth:fcx651sd26n0rwgcks1doo9ro4ds3b");
+    _addSink("PASS oauth:$oauth");
     _addSink("NICK $userNick");
     _addSink("JOIN #$channelName");
   }

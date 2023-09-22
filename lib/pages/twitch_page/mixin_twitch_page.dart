@@ -6,8 +6,13 @@ mixin _MixinTwitchPage<T extends ConsumerStatefulWidget> on ConsumerState<T> {
   void mixinInit({
     required String channelName,
     required String userNick,
+    required String oauth,
   }) {
-    _client = TwitchChatClient(channelName: channelName, userNick: userNick);
+    _client = TwitchChatClient(
+      channelName: channelName,
+      userNick: userNick,
+      oauth: oauth,
+    );
 
     _afterBuild();
   }
@@ -15,7 +20,6 @@ mixin _MixinTwitchPage<T extends ConsumerStatefulWidget> on ConsumerState<T> {
   @override
   void dispose() {
     _client.dispose();
-    ref.read(rMessages).dispose();
     super.dispose();
   }
 

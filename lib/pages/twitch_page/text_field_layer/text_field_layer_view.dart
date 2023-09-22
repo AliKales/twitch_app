@@ -24,6 +24,7 @@ class _TextFieldLayerViewState extends State<TextFieldLayerView> {
   }
 
   void _onSend() {
+    if (_controller.textTrim.isEmpty) return;
     widget.onSend.call(_controller.textTrim);
     _controller.clear();
   }
@@ -32,6 +33,7 @@ class _TextFieldLayerViewState extends State<TextFieldLayerView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Expanded(
             child: MessageTextField(
